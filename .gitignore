@@ -131,3 +131,9 @@ dmypy.json
 
 # IDEA
 .idea/
+
+# Django Backend Config
+test/
+static/
+templates/
+app/migrations/
