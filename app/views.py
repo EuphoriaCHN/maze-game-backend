@@ -1,18 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.http import *
 
 
 # Create your views here.
 
+@require_GET
 def index(request):
     """
     Demo Index
     :param request: Http request object
-    :return: Http response
+    :return: Template view
     """
     return render(request, 'app/index.html', None)
 
 
+@require_GET
 def return_favicon_ico(request):
     """
     Get favicon.ico
@@ -26,3 +29,16 @@ def return_favicon_ico(request):
     except Exception as exception:
         print(exception)
         return HttpResponse(str(exception))
+
+
+@require_POST
+def getting_maze(request):
+    """
+    Get maze from frontend, using BFS to search answer.
+    The maze consists of a two-dimensional array of N rows and m columns,
+    Each item of the array is a character, and the optional characters are ' ', '#', 'S', 'G'.
+
+    :param request:
+    :return: Http Response for Ajax
+    """
+    pass
