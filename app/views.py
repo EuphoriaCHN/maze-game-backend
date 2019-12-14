@@ -1,6 +1,13 @@
+"""
+Django View Layer
+
+Created by Qinhong Wang, 2019-12-14
+"""
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.http import *
+from tools.BreadthFirstSearch import breadth_first_search
 
 
 # Create your views here.
@@ -37,8 +44,9 @@ def getting_maze(request):
     Get maze from frontend, using BFS to search answer.
     The maze consists of a two-dimensional array of N rows and m columns,
     Each item of the array is a character, and the optional characters are ' ', '#', 'S', 'G'.
-
-    :param request:
+    Calling BreadthFirstSearch.breadth_first_search(maze, start, end) to get moving step queue and return,
+    But before That, this function should find 'S'(Start Point) location and 'G'(Goal Point) location.
+    :param request: Http Request
     :return: Http Response for Ajax
     """
-    pass
+    pass  # TODO::
