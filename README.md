@@ -39,6 +39,6 @@ To run Django's test suite:
 
 ## Contributor
 
-- [Qinhong Wang](https://www.wqh4u.cn)
-- Haijin Bao
-- Zhuang Yan
+- [Qinhong Wang](https://www.wqh4u.cn) - euphoria.wqh@gmail.com
+- Haijin Bao - 2551480456@qq.com
+- Zhuang Yan - 1366480684@qq.com
