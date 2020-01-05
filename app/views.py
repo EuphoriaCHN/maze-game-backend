@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.http import *
 from tools.BreadthFirstSearch import breadth_first_search
+import json
 
 
 # Create your views here.
@@ -49,4 +50,11 @@ def getting_maze(request):
     :param request: Http Request
     :return: Http Response for Ajax
     """
-    pass  # TODO::
+
+    response = HttpResponse(json.dumps({'status': 200, 'data': 'ok'}), content_type = 'application/json')
+    response['Access-Control-Allow-Origin'] = '*'
+    response['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    response['Access-Control-Max-Age'] = '1000'
+    response['Access-Control-Allow-Headers'] = '*'
+
+    return response
