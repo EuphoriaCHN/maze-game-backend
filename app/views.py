@@ -5,10 +5,12 @@ Created by Qinhong Wang, 2019-12-14
 """
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import *
 from tools.BreadthFirstSearch import breadth_first_search
 import json
+from django.core import serializers
+import simplejson
 
 
 # Create your views here.
@@ -50,8 +52,17 @@ def getting_maze(request):
     :param request: Http Request
     :return: Http Response for Ajax
     """
+    maze = request.POST.get('maze')
+    start = request.POST.get('start')
+    end = request.POST.get('end')
 
-    response = HttpResponse(json.dumps({'status': 200, 'data': 'ok'}), content_type = 'application/json')
+    maze = eval(maze)
+    start = eval(start)
+    end = eval(end)
+
+    ans = breadth_first_search(maze, start, end)
+
+    response = HttpResponse(ans, content_type = "application/json")
     response['Access-Control-Allow-Origin'] = '*'
     response['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
     response['Access-Control-Max-Age'] = '1000'

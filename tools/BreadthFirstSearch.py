@@ -56,6 +56,9 @@ def breadth_first_search(maze: list, start: list, end: list) -> list:
 
     x_cur, y_cur = end
 
+    if maze[x_cur][y_cur] == 0:
+        return []
+
     while [x_cur, y_cur] != start:
         for i in range(0, 4):
             temp_x = x_cur + dx[i]
