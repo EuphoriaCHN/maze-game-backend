@@ -28,10 +28,6 @@ def breadth_first_search(maze: list, start: list, end: list) -> list:
         (0, 1): 3
     }
 
-    for rows in range(0, MAX_ROWS):
-        for cols in range(0, MAX_COLUMNS):
-            maze[rows][cols] = -1 if maze[rows][cols] is 1 else 0
-
     queue = Queue()
     queue.put(start)
 

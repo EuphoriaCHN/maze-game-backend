@@ -8,9 +8,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import *
 from tools.BreadthFirstSearch import breadth_first_search
+from tools.MakeRandomMaze import build_twist
 import json
 from django.core import serializers
 import simplejson
+import random
 
 
 # Create your views here.
@@ -62,10 +64,17 @@ def getting_maze(request):
 
     ans = breadth_first_search(maze, start, end)
 
-    response = HttpResponse(ans, content_type = "application/json")
-    response['Access-Control-Allow-Origin'] = '*'
-    response['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
-    response['Access-Control-Max-Age'] = '1000'
-    response['Access-Control-Allow-Headers'] = '*'
+    return JsonResponse(ans, safe = False)
 
-    return response
+
+@require_POST
+def random_maze(request):
+    rows = int(request.POST.get('rowNumber'))
+    cols = int(request.POST.get('colNumber'))
+
+    if rows & 0x1 is 0 or cols & 0x1 is 0:
+        m = []
+    else:
+        m = build_twist(rows, cols)
+
+    return JsonResponse(m, safe = False)
