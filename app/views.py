@@ -73,8 +73,16 @@ def random_maze(request):
     cols = int(request.POST.get('colNumber'))
 
     if rows & 0x1 is 0 or cols & 0x1 is 0:
-        m = []
+        response = {
+            "status": 500,
+            "data": "错误的迷宫行数或列数！"
+        }
     else:
-        m = build_twist(rows, cols)
+        response = {
+            "status": 200,
+            "data": build_twist(rows, cols)
+        }
 
-    return JsonResponse(m, safe = False)
+
+
+    return JsonResponse(response, safe = False)

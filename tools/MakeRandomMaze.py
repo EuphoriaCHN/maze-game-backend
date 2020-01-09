@@ -106,7 +106,6 @@ def build_twist(num_rows: int, num_cols: int) -> list:
             # 既然已经合并了，那么根节点应该是相同的
             # ================================================
             merged_root = union_find.get_root(first_union_id)
-            print([merged_root, merged_root], end = ', ')
             # ================================================
             # V1.0 改动：
             # 因为打通了墙壁，那么这面墙也形成了一个通路，将墙壁也与合并后的结果统一合并
