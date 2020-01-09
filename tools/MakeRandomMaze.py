@@ -1,5 +1,11 @@
 # coding=utf-8
 
+"""
+Create a n rows and m columns maze.
+
+Created by Qinhong Wang, 2020-01-09
+"""
+
 import random
 from tools.UnionFind import UnionFind
 

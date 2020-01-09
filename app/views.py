@@ -4,15 +4,12 @@ Django View Layer
 Created by Qinhong Wang, 2019-12-14
 """
 
-from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
 from django.views.decorators.http import *
+
 from tools.BreadthFirstSearch import breadth_first_search
 from tools.MakeRandomMaze import build_twist
-import json
-from django.core import serializers
-import simplejson
-import random
 
 
 # Create your views here.
@@ -47,10 +44,8 @@ def return_favicon_ico(request):
 def getting_maze(request):
     """
     Get maze from frontend, using BFS to search answer.
-    The maze consists of a two-dimensional array of N rows and m columns,
-    Each item of the array is a character, and the optional characters are ' ', '#', 'S', 'G'.
-    Calling BreadthFirstSearch.breadth_first_search(maze, start, end) to get moving step queue and return,
-    But before That, this function should find 'S'(Start Point) location and 'G'(Goal Point) location.
+    The maze consists of a two-dimensional array of n rows and m columns,
+    Calling BreadthFirstSearch.breadth_first_search(maze, start, end) to get moving step queue and return.
     :param request: Http Request
     :return: Http Response for Ajax
     """
@@ -69,6 +64,12 @@ def getting_maze(request):
 
 @require_POST
 def random_maze(request):
+    """
+    Get the number of rows and columns of the maze that should be generated from the front end,
+    use the build twist() function to randomly generate and return a matrix composed of "0" and "1".
+    :param request: Http Request
+    :return: Http Response for Ajax
+    """
     rows = int(request.POST.get('rowNumber'))
     cols = int(request.POST.get('colNumber'))
 
